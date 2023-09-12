@@ -1,0 +1,120 @@
+:host {
+  --main-spacing-desktop: calc(var(--size-7) + var(--size-1));
+  --main-spacing-mobile: var(--size-5);
+  --interior-spacing-desktop: var(--size-3);
+  --interior-spacing-mobile: var(--size-2);
+  --min-sidebar-size: var(--size-13);
+  --main-radius: var(--radius-4);
+
+  --main-spacing: var(--main-spacing-desktop);
+  --interior-spacing: var(--interior-spacing-desktop);
+
+  display: grid;
+  grid-template-columns: minmax(var(--min-sidebar-size), 1fr) 4fr;
+  grid-template-rows: min-content 1fr min-content;
+  grid-template-areas:
+    "sidebar title"
+    "sidebar main"
+    "sidebar footer";
+
+  box-sizing: border-box;
+}
+
+slot {
+  display: block;
+}
+
+slot:not([name]) {
+  grid-area: main;
+  background: var(--title-background);
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: var(--interior-spacing);
+  overflow: hidden;
+}
+
+::slotted(main) {
+  background: var(--canvas-background);
+  border-top-left-radius: var(--main-radius);
+  border-bottom-left-radius: var(--main-radius);
+  padding: var(--main-spacing);
+  height: 100%;
+}
+
+slot[name="sidebar"] {
+  grid-area: sidebar;
+  color: var(--title-color);
+}
+
+slot[name="title"] {
+  grid-area: title;
+  background: var(--title-background);
+  color: var(--title-color);
+  padding: var(--interior-spacing);
+  padding-inline-start: calc(var(--interior-spacing) + var(--main-spacing));
+}
+
+title-fallback {
+  display: none;
+}
+
+::slotted(header) {
+  display: flex;
+  align-items: center;
+  gap: var(--interior-spacing);
+}
+
+slot[name="footer"] {
+  grid-area: footer;
+  background: var(--title-background);
+  padding-inline: calc(var(--interior-spacing) + var(--main-spacing));
+  color: var(--title-color);
+  font-size: 85%;
+  text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+  :host {
+    --main-spacing: var(--main-spacing-mobile);
+    --interior-spacing: var(--interior-spacing-mobile);
+
+    grid-template-columns: 0 1fr;
+  }
+
+  slot[name="title"] {
+    grid-area: unset;
+    display: block;
+    position: fixed;
+    z-index: var(--layer-4);
+    left: 0;
+    right: 0;
+  }
+
+  title-fallback {
+    grid-area: title;
+    display: block;
+    padding: var(--interior-spacing);
+  }
+
+  title-fallback h1 {
+    margin: 0;
+    font-size: var(--title-font-size);
+  }
+
+  slot[name="sidebar"] {
+    grid-area: unset;
+    display: block;
+    position: fixed;
+    height: 100vh;
+    background: var(--title-background);
+    z-index: var(--layer-4);
+    width: 75vw;
+    translate: -80vw 0;
+    transition: translate 0.25s var(--ease-in-out-3);
+    box-shadow: var(--shadow-6);
+  }
+
+  :host([open-sidebar]) slot[name="sidebar"] {
+    translate: 0 0;
+  }
+}

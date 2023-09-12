@@ -1,0 +1,53 @@
+html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--body-background);
+  font-family: var(--body-font);
+  font-size: var(--font-scale);
+  padding: 0;
+  margin: 0;
+  min-height: 100%;
+}
+
+a {
+  color: #4a406b;
+  text-underline-offset: 0.1em;
+  text-decoration-color: #c3bcd8;
+  text-decoration-skip-ink: auto;
+  transition: all 0.12s var(--ease-in-out-3);
+}
+
+a:hover {
+  color: var(--accent-color);
+  text-decoration-color: var(--accent-color);
+}
+
+h1 {
+  margin: 0;
+  font-size: var(--title-font-size);
+}
+
+h2 {
+  margin-block-start: 0;
+}
+
+h2[with-icon] {
+  display: flex;
+  gap: var(--side-3);
+  align-items: end;
+  justify-content: space-between;
+}
+
+h2[with-icon] bd-icon {
+  --icon-size: 1.25em;
+}
+
+p {
+  line-height: var(--font-lineheight-3);
+}

@@ -1,0 +1,53 @@
+<template shadowrootmode="open">
+  <style>
+    :host {
+      --metadata-color: var(--stone-6);
+      --metadata-font-size: 85%;
+      --metadata-spacing: var(--size-4);
+      --avatar-spacing: var(--size-3);
+
+      display: block;
+    }
+
+    ::slotted(img) {
+      width: 60px;
+      border-radius: 100%;
+    }
+
+    ::slotted(p:last-of-type) {
+      margin-block-end: 0;
+    }
+
+    header {
+      display: flex;
+      gap: var(--metadata-spacing);
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--metadata-font-size);
+      font-weight: bold;
+      color: var(--metadata-color);
+    }
+
+    figure {
+      margin: 0;
+      display: flex;
+      gap: var(--avatar-spacing);
+      align-items: center;
+    }
+
+    slot[name="sent"] {
+      text-align: right;
+    }
+  </style>
+
+  <header part="metadata">
+    <figure>
+      <slot name="avatar"></slot>
+      <figcaption><slot name="author"></slot></figcaption>
+    </figure>
+
+    <slot name="sent"></slot>
+  </header>
+
+  <slot></slot>
+</template>

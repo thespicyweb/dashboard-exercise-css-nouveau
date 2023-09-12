@@ -1,0 +1,40 @@
+<bd-dashboard-cell>
+  <h2 with-icon>
+    Group Activities
+
+    <bd-icon>
+      {% include "svgs/users-group.svg" %}
+    </bd-icon>
+  </h2>
+
+  <bd-messages role="list">
+    {% component_dsd "bd-messages" %}
+    <bd-message role="listitem">
+      {% component_dsd "bd-message" %}
+      <img slot="avatar" src="https://i.pravatar.cc/120?u=frank@demo.spicyweb.dev" />
+      <span slot="author">Frank Ford</span>
+
+      <time slot="sent" datetime="2023-11-15">11/15/23</time>
+
+      <p><strong>Onsite Face-to-Face</strong></p>
+
+      <p>It's our last chance to get together before people start going on vacation. Let's finish out the year with some real enjoyable activities!</p>
+
+      <p><a href="#">Meeting Agenda</a></p>
+    </bd-message>
+
+    <bd-message role="listitem">
+      {% component_dsd "bd-message" %}
+      <img slot="avatar" src="https://i.pravatar.cc/120?u=sandra@demo.spicyweb.dev" />
+      <span slot="author">Louis Silvestri</span>
+
+      <time slot="sent" datetime="2023-12-06">12/6/23</time>
+
+      <p><strong>Secret Santa</strong></p>
+
+      <p>It's that time of year again! Make sure you sign up!</p>
+
+      <p><a href="#">Entry Details</a></p>
+    </bd-message>
+  </bd-messages>
+</bd-dashboard-cell>

@@ -1,0 +1,25 @@
+/* Tweaks to elements not covered by DSD templates */
+
+bd-icon {
+  --icon-size: 1em;
+
+  display: inline-block;
+  height: var(--icon-size);
+}
+
+bd-icon svg {
+  display: block;
+  height: 100%;
+  width: auto;
+  margin: 0;
+}
+
+bd-dashboard {
+  --min-cell-size: 300px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-cell-size), 1fr));
+  gap: var(--size-8);
+
+  margin-block-end: var(--size-8);
+}

@@ -1,0 +1,77 @@
+<template shadowrootmode="open">
+  <div>
+    <canvas part="chart"></canvas>
+  </div>
+
+  <style>
+    :host {
+      display: flex;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    div {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+    }
+  </style>
+</template>
+
+<script type="module">
+  import "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
+
+  if (!customElements.get("bd-chart")) {
+    customElements.define("bd-chart", class extends HTMLElement {
+      defaultBarColors = [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(201, 203, 207, 0.5)'
+                      ]
+      defaultBarBorders = [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)'
+                          ]
+
+      connectedCallback() {
+        this.dispatchEvent(new CustomEvent("request-config", { detail: { callback: (config) => {
+          this.chart = new Chart(
+            this.shadowRoot.querySelector("part['chart']"),
+            {
+              type: this.getAttribute("type") || "bar",
+              options: {...(config.options || {})},
+              data: config.data
+            }
+          )
+        }}}))
+
+        window.addEventListener("resize", this)
+      }
+
+      disconnectedCallback() {
+        window.removeEventListener("resize", this)
+        this.chart.destroy()
+        this.chart = null
+      }
+
+      handleEvent() {
+        clearTimeout(this.debounce)
+        this.debounce = setTimeout(() => {
+          if (this.getAttribute("type") !== "doughnut") {
+            this.chart.resize()
+          }
+        }, 50)
+      }
+    })
+  }
+</script>

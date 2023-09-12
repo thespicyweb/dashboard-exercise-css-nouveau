@@ -1,0 +1,86 @@
+<template shadowrootmode="open">
+  <style>
+    :host {
+      --spacing-inline: var(--size-4);
+      --spacing-block: var(--size-3);
+      --radius: var(--radius-2);
+
+      display: flex;
+      gap: var(--spacing-block);
+      padding-inline: var(--spacing-inline);
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: background 0.12s var(--ease-in-out-3);
+    }
+
+    :host(:hover) {
+      background: var(--accent-color);
+    }
+
+    ::slotted(a) {
+      color: inherit !important;
+      display: block;
+      padding-block: var(--spacing-block);
+      text-decoration: none;
+    }
+
+    ::slotted(bd-icon) {
+      --icon-size: 1.5em !important;
+      margin-top: 0.1em;
+    }
+
+    slot {
+      display: block;
+    }
+
+    slot:not([name]) {
+      flex-grow: 1;
+    }
+
+    :host([selected]:not(:hover)) {
+      background: var(--sidebar-selected-background);
+    }
+
+    :host([noprefix]) slot[name="prefix"] {
+      display: none;
+    }
+
+    :host([nosuffix]) slot[name="suffix"] {
+      display: none;
+    }
+  </style>
+
+  <slot name="prefix"></slot>
+  <slot></slot>
+  <slot name="suffix"></slot>
+</template>
+
+<script type="module">
+  // NOTE: normally I would recommend this be located in a separate script for bundling
+  // (or use something like WebC), but for our semi-buildless demo purposes, it's fine…
+
+  if (!customElements.get("bd-menu-item")) {
+    customElements.define("bd-menu-item", class extends HTMLElement {
+      connectedCallback() {
+        this.addEventListener("click", this)
+      }
+
+      disconnectedCallback() {
+        this.removeEventListener("click", this)
+      }
+
+      handleEvent(e) {
+        if (!e.composedPath().some(item => item.localName === "a")) {
+          if (e.ctrlKey || e.metaKey) {
+            window.open(this.querySelector("a").href)
+          } else {
+            this.querySelector("a").click()
+          }
+        }
+      }
+    })
+  }
+</script>

@@ -1,0 +1,49 @@
+<nav slot="sidebar">
+  [x]
+  <a id="logo" href="/" aria-label="The Spicy Web Logo">
+    {% include "svgs/logo.svg" %}
+  </a>
+
+  <bd-menu role="list">
+    {% component_dsd "bd-menu" %}
+    <bd-menu-item role="listitem" selected noprefix>
+      {% component_dsd "bd-menu-item" %}
+      <a href="/">Dashboard</a>
+      <bd-icon slot="suffix">
+        {% include "svgs/gauge.svg" %}
+      </bd-icon>
+    </bd-menu-item>
+
+    <bd-menu-item role="listitem" noprefix>
+      {% component_dsd "bd-menu-item" %}
+      <a href="#messages">Messages</a>
+      <bd-icon slot="suffix">
+        {% include "svgs/messages.svg" %}
+      </bd-icon>
+    </bd-menu-item>
+
+    <bd-menu-item role="listitem" noprefix>
+      {% component_dsd "bd-menu-item" %}
+      <a href="#reports">Reports</a>
+      <bd-icon slot="suffix">
+        {% include "svgs/file-analytics.svg" %}
+      </bd-icon>
+    </bd-menu-item>
+
+    <bd-menu-item role="listitem" noprefix>
+      {% component_dsd "bd-menu-item" %}
+      <a href="#groups">Groups</a>
+      <bd-icon slot="suffix">
+        {% include "svgs/users-group.svg" %}
+      </bd-icon>
+    </bd-menu-item>
+
+    <bd-menu-item role="listitem" noprefix>
+      {% component_dsd "bd-menu-item" %}
+      <a href="#settings">Settings</a>
+      <bd-icon slot="suffix">
+        {% include "svgs/settings.svg" %}
+      </bd-icon>
+    </bd-menu-item>
+  </bd-menu>
+</nav>

@@ -1,0 +1,25 @@
+<template shadowrootmode="open">
+  <style>
+    :host {
+      --interior-spacing: var(--size-5);
+
+      display: grid;
+      gap: var(--interior-spacing);
+      padding: var(--interior-spacing);
+      background: var(--callout-background);
+      border-radius: var(--callout-radius);
+      box-shadow: var(--callout-shadow);
+    }
+
+    ::slotted(bd-message) {
+      border-top: 1px solid var(--stone-3);
+      padding-top: var(--interior-spacing);
+    }
+
+    ::slotted(bd-message:first-of-type) {
+      border-top: none;
+      padding-top: 0;
+    }
+  </style>
+  <slot></slot>
+</template>

@@ -1,0 +1,66 @@
+---
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link href="/styles/index.css" rel="stylesheet" />
+  </head>
+  <body>
+    {% component_dsd "body-grid-layout" %}
+
+    <header slot="title">
+      <button id="toggle-sidebar" onclick='
+        if (!document.body.hasAttribute("open-sidebar")) {
+          document.body.setAttribute("open-sidebar", "")
+        } else {
+          document.body.removeAttribute("open-sidebar")
+        }
+      '>
+        <bd-icon>
+          {% include "svgs/layout-sidebar-left-expand.svg" %}
+        </bd-icon>
+      </button>
+      <h1 style="flex-grow: 1">{{ title }}</h1>
+
+      <bd-icon style="--icon-size: var(--size-5)">
+        {% include "svgs/search.svg" %}
+      </bd-icon>
+    </header>
+
+    <main>
+      {{ content }}
+    </main>
+
+    {% include "sidebar" %}
+
+    <footer slot="footer">
+      <p>For support questions, contact your local IT department. I'm sure they'll get to it straight away.</p>
+    </footer>
+
+    <script>
+      document.body.addEventListener("click", e => {
+        if (!e.composedPath().some(item => (item.localName === "slot" && item.name === "sidebar") || item.id == "toggle-sidebar")) {
+          document.body.removeAttribute("open-sidebar")
+        }
+      })
+
+      // DSD Polyfill
+      ;(function attachShadowRoots(root) {
+        root.querySelectorAll("template[shadowrootmode]").forEach(template => {
+          if (template.parentNode.shadowRoot) { // already attached somehow…Eleventy dev morph?
+            template.remove()
+          } else {
+            const mode = template.getAttribute("shadowrootmode");
+            const shadowRoot = template.parentNode.attachShadow({ mode });
+            shadowRoot.appendChild(template.content);
+            template.remove();
+            attachShadowRoots(shadowRoot);
+          }
+        });
+      })(document);
+    </script>
+  </body>
+</html>

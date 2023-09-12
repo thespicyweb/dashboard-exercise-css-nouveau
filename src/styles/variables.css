@@ -1,0 +1,39 @@
+@import "https://fonts.bunny.net/css?family=red-hat-text:400,400i,700";
+@import "https://unpkg.com/open-props";
+
+:root {
+  /* Mandate "light" Open Props shadow settings, even for dark OS modes */
+  --shadow-color: 220 3% 15%;
+  --shadow-strength: 1%;
+
+  /* Design Tokens */
+  --body-font: "Red Hat Text", sans-serif;
+  --body-background: #2e2842;
+  --font-scale: 120%;
+  --sidebar-background: var(--body-background);
+  --sidebar-selected-background: #53254f;
+  --title-background: var(--body-background);
+  --title-color: var(--stone-0);
+  --title-font-size: var(--font-size-5);
+  --canvas-background: #efede2;
+  --surface-background: var(--stone-0);
+  --accent-color: #ffa507;
+
+  --callout-interior-spacing: var(--size-3);
+  --callout-background: var(--surface-background);
+  --callout-radius: var(--radius-3);
+  --callout-shadow: var(--shadow-3);
+}
+
+@media screen and (max-width: 1200px) {
+  :root {
+    --font-scale: 105%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    --font-scale: 95%;
+    --title-font-size: var(--font-size-4);
+  }
+}

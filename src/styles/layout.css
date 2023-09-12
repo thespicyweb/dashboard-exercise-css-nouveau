@@ -1,0 +1,31 @@
+#logo {
+  display: block;
+  padding: var(--size-4);
+}
+
+#logo > svg {
+  width: 60px;
+}
+
+button#toggle-sidebar {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  button#toggle-sidebar {
+    display: inline-block;
+    font: inherit;
+    border-radius: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    margin-inline-start: -1em;
+  }
+
+  button#toggle-sidebar bd-icon {
+    --icon-size: var(--size-7);
+    margin-block-end: calc(0rem - var(--size-2));
+  }
+}

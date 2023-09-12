@@ -1,0 +1,34 @@
+<bd-dashboard-cell>
+  <h2 with-icon>
+    Latest Messages
+
+    <bd-icon>
+      {% include "svgs/messages.svg" %}
+    </bd-icon>
+  </h2>
+
+  <bd-messages role="list">
+    {% component_dsd "bd-messages" %}
+    <bd-message role="listitem">
+      {% component_dsd "bd-message" %}
+      <img slot="avatar" src="https://i.pravatar.cc/120?u=jennaclarksdale@demo.spicyweb.dev" />
+      <span slot="author">Jenna Clarksdale</span>
+
+      <time slot="sent" datetime="2023-09-23">9/23/23</time>
+
+      <p>Did we remember to ask about re-running the previous report? I'm not sure if the data got fixed yet.</p>
+    </bd-message>
+
+    <bd-message role="listitem">
+      {% component_dsd "bd-message" %}
+      <img slot="avatar" src="https://i.pravatar.cc/120?u=frank@demo.spicyweb.dev" />
+      <span slot="author">Frank Ford</span>
+
+      <time slot="sent" datetime="2023-09-22">9/22/23</time>
+
+      <p>Those numbers are really impressive!</p>
+
+      <p>Let's talk about it at the next group meeting. -ff</p>
+    </bd-message>
+  </bd-messages>
+</bd-dashboard-cell>
