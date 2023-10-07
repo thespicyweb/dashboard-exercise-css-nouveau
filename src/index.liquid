@@ -3,7 +3,9 @@ layout: site_layout.liquid
 title: Business Dashboard
 ---
 
-{% include "dashboard_charts" %}
+<bd-dashboard style="--min-cell-size: 340px">
+  {% include "dashboard_charts" %}
+</bd-dashboard>
 
 <bd-dashboard>
   {% include "latest_messages" %}

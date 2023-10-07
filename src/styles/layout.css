@@ -1,3 +1,5 @@
+/* Site Logo */
+
 #logo {
   display: block;
   padding: var(--size-4);
@@ -7,12 +9,14 @@
   width: 60px;
 }
 
-button#toggle-sidebar {
+/* Sidebar Toggler Buttons */
+
+button[sidebar-toggler] {
   display: none;
 }
 
 @media screen and (max-width: 700px) {
-  button#toggle-sidebar {
+  button[sidebar-toggler] {
     display: inline-block;
     font: inherit;
     border-radius: none;
@@ -24,8 +28,32 @@ button#toggle-sidebar {
     margin-inline-start: -1em;
   }
 
-  button#toggle-sidebar bd-icon {
+  button[sidebar-toggler] bd-icon {
     --icon-size: var(--size-7);
     margin-block-end: calc(0rem - var(--size-2));
   }
+}
+
+/* Skip to Content Link */
+
+a[slot="skip-to-content"] {
+  box-sizing: border-box;
+  background: var(--sidebar-selected-background);
+  color: white;
+  border-bottom-left-radius: var(--radius-2);
+  border-bottom-right-radius: var(--radius-2);
+  width: 18ch;
+  height: calc(var(--size-8) + var(--size-1));
+  left: calc(50% - 9ch);
+  padding: var(--size-2) calc(var(--size-2) + var(--size-1));
+  position: absolute;
+  transform: translateY(calc(0rem - var(--size-9)));
+  transition: transform 0.3s;
+  top: 0;
+  text-align: center;
+  z-index: 1;
+}
+
+a[slot="skip-to-content"]:focus {
+  transform: translateY(0%);
 }

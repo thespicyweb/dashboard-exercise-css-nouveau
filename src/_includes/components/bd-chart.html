@@ -20,19 +20,22 @@
 </template>
 
 <script type="module">
+  // NOTE: normally I would recommend this be located in a separate script for bundling
+  // (or use something like WebC), but for our semi-buildless demo purposes, it's fine…
+
   import "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
 
   if (!customElements.get("bd-chart")) {
     customElements.define("bd-chart", class extends HTMLElement {
-      defaultBarColors = [
-                        'rgba(255, 99, 132, 0.5)',
-                        'rgba(255, 159, 64, 0.5)',
-                        'rgba(255, 205, 86, 0.5)',
-                        'rgba(75, 192, 192, 0.5)',
-                        'rgba(54, 162, 235, 0.5)',
-                        'rgba(153, 102, 255, 0.5)',
-                        'rgba(201, 203, 207, 0.5)'
-                      ]
+      defaultBarColors =   [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(255, 159, 64, 0.5)',
+                            'rgba(255, 205, 86, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(153, 102, 255, 0.5)',
+                            'rgba(201, 203, 207, 0.5)'
+                          ]
       defaultBarBorders = [
                             'rgb(255, 99, 132)',
                             'rgb(255, 159, 64)',
@@ -44,16 +47,20 @@
                           ]
 
       connectedCallback() {
-        this.dispatchEvent(new CustomEvent("request-config", { detail: { callback: (config) => {
-          this.chart = new Chart(
-            this.shadowRoot.querySelector("part['chart']"),
-            {
-              type: this.getAttribute("type") || "bar",
-              options: {...(config.options || {})},
-              data: config.data
-            }
-          )
-        }}}))
+        this.dispatchEvent(new CustomEvent("request-config", {
+          detail: {
+              callback: (config) => {
+                this.chart = new Chart(
+                  this.shadowRoot.querySelector("[part='chart']"),
+                  {
+                    type: this.getAttribute("type") || "bar",
+                    options: {...(config.options || {})},
+                    data: config.data
+                  }
+                )
+              }
+          }
+        }))
 
         window.addEventListener("resize", this)
       }

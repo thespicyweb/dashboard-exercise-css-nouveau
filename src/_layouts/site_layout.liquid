@@ -11,42 +11,19 @@
   <body>
     {% component_dsd "body-grid-layout" %}
 
-    <header slot="title">
-      <button id="toggle-sidebar" onclick='
-        if (!document.body.hasAttribute("open-sidebar")) {
-          document.body.setAttribute("open-sidebar", "")
-        } else {
-          document.body.removeAttribute("open-sidebar")
-        }
-      '>
-        <bd-icon>
-          {% include "svgs/layout-sidebar-left-expand.svg" %}
-        </bd-icon>
-      </button>
-      <h1 style="flex-grow: 1">{{ title }}</h1>
+    {% include "shared/header" %}
 
-      <bd-icon style="--icon-size: var(--size-5)">
-        {% include "svgs/search.svg" %}
-      </bd-icon>
-    </header>
-
-    <main>
+    <main id="content">
       {{ content }}
     </main>
 
-    {% include "sidebar" %}
+    {% include "shared/sidebar" %}
 
-    <footer slot="footer">
-      <p>For support questions, contact your local IT department. I'm sure they'll get to it straight away.</p>
-    </footer>
+    {% include "shared/footer" %}
+
+    <a slot="skip-to-content" href="#content">Skip to content</a>
 
     <script>
-      document.body.addEventListener("click", e => {
-        if (!e.composedPath().some(item => (item.localName === "slot" && item.name === "sidebar") || item.id == "toggle-sidebar")) {
-          document.body.removeAttribute("open-sidebar")
-        }
-      })
-
       // DSD Polyfill
       ;(function attachShadowRoots(root) {
         root.querySelectorAll("template[shadowrootmode]").forEach(template => {

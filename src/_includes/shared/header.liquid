@@ -1,0 +1,18 @@
+<header slot="title">
+  <button sidebar-toggler onclick='
+    if (!document.body.hasAttribute("open-sidebar")) {
+      document.body.setAttribute("open-sidebar", "")
+    } else {
+      document.body.removeAttribute("open-sidebar")
+    }
+  '>
+    <bd-icon>
+      {% include "svgs/layout-sidebar-left-expand.svg" %}
+    </bd-icon>
+  </button>
+  <h1 style="flex-grow: 1">{{ title }}</h1>
+
+  <bd-icon style="--icon-size: var(--size-5)">
+    {% include "svgs/search.svg" %}
+  </bd-icon>
+</header>

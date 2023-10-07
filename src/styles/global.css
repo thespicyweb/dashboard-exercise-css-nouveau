@@ -39,7 +39,7 @@ h2 {
 
 h2[with-icon] {
   display: flex;
-  gap: var(--side-3);
+  gap: var(--size-3);
   align-items: end;
   justify-content: space-between;
 }

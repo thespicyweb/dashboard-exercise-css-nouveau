@@ -4,13 +4,14 @@
       --metadata-color: var(--stone-6);
       --metadata-font-size: 85%;
       --metadata-spacing: var(--size-4);
-      --avatar-spacing: var(--size-3);
+      --avatar-size: 48px;
+      --avatar-spacing: calc(var(--size-3) - 2px);
 
       display: block;
     }
 
     ::slotted(img) {
-      width: 60px;
+      width: var(--avatar-size);
       border-radius: 100%;
     }
 

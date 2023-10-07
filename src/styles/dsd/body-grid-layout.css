@@ -107,6 +107,7 @@ slot[name="footer"] {
     position: fixed;
     height: 100vh;
     background: var(--title-background);
+    border-inline-end: 1px solid var(--sidebar-selected-background);
     z-index: var(--layer-4);
     width: 75vw;
     translate: -80vw 0;

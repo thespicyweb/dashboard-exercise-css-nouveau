@@ -1,5 +1,16 @@
 <nav slot="sidebar">
-  [x]
+  <button sidebar-toggler style="float: right; margin: var(--size-2)" onclick='
+    if (!document.body.hasAttribute("open-sidebar")) {
+      document.body.setAttribute("open-sidebar", "")
+    } else {
+      document.body.removeAttribute("open-sidebar")
+    }
+  '>
+    <bd-icon>
+      {% include "svgs/layout-sidebar-left-collapsed-filled.svg" %}
+    </bd-icon>
+  </button>
+
   <a id="logo" href="/" aria-label="The Spicy Web Logo">
     {% include "svgs/logo.svg" %}
   </a>
@@ -47,3 +58,11 @@
     </bd-menu-item>
   </bd-menu>
 </nav>
+
+<script type="module">
+  document.body.addEventListener("click", e => {
+    if (!e.composedPath().some(item => (item.localName === "slot" && item.name === "sidebar") || item.hasAttribute && item.hasAttribute("sidebar-toggler"))) {
+      document.body.removeAttribute("open-sidebar")
+    }
+  })
+</script>

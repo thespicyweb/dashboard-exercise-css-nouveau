@@ -7,10 +7,13 @@
     </bd-icon>
   </h2>
 
+  <!-- List of Activities, using the same message components as for Latest Messages -->
   <bd-messages role="list">
     {% component_dsd "bd-messages" %}
+
     <bd-message role="listitem">
       {% component_dsd "bd-message" %}
+
       <img slot="avatar" src="https://i.pravatar.cc/120?u=frank@demo.spicyweb.dev" />
       <span slot="author">Frank Ford</span>
 
@@ -25,6 +28,7 @@
 
     <bd-message role="listitem">
       {% component_dsd "bd-message" %}
+
       <img slot="avatar" src="https://i.pravatar.cc/120?u=sandra@demo.spicyweb.dev" />
       <span slot="author">Louis Silvestri</span>
 

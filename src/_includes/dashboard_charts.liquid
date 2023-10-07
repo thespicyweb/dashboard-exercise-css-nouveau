@@ -1,132 +1,130 @@
-<bd-dashboard style="--min-cell-size: 340px">
-  <bd-dashboard-cell>
-    <h2 with-icon>
-      Quarterly Sales
+<bd-dashboard-cell>
+  <h2 with-icon>
+    Quarterly Sales
 
-      <bd-icon>
-        {% include "svgs/file-analytics.svg" %}
-      </bd-icon>
-    </h2>
+    <bd-icon>
+      {% include "svgs/file-analytics.svg" %}
+    </bd-icon>
+  </h2>
 
-    <bd-callout>
-      {% component_dsd "bd-callout" %}
+  <bd-callout>
+    {% component_dsd "bd-callout" %}
 
-      <bd-chart type="line">
-        {% component_dsd "bd-chart" %}
-        <script>
-          document.currentScript.parentNode.addEventListener("request-config", e => {
-            const callback = e.detail.callback
+    <bd-chart type="line">
+      {% component_dsd "bd-chart" %}
+      <script>
+        document.currentScript.parentNode.addEventListener("request-config", e => {
+          const callback = e.detail.callback
 
-            const data = [
-              { month: "July", millions: 12.21 },
-              { month: "August", millions: 20.23 },
-              { month: "September", millions: 15.51 },
-            ];
+          const data = [
+            { month: "July", millions: 12.21 },
+            { month: "August", millions: 20.23 },
+            { month: "September", millions: 15.51 },
+          ];
 
-            callback({
-              options: {
-                aspectRatio: 1.5,
-              },
-              data: {
-                labels: data.map(row => row.month),
-                datasets: [
-                  {
-                    label: 'Revenue (Millions)',
-                    data: data.map(row => row.millions)
-                  }
-                ]
-              }
-            })
+          callback({
+            options: {
+              aspectRatio: 1.5,
+            },
+            data: {
+              labels: data.map(row => row.month),
+              datasets: [
+                {
+                  label: "Revenue (Millions)",
+                  data: data.map(row => row.millions)
+                }
+              ]
+            }
           })
-        </script>
-      </bd-chart>
-    </bd-callout>
-  </bd-dashboard-cell>
+        })
+      </script>
+    </bd-chart>
+  </bd-callout>
+</bd-dashboard-cell>
 
-  <bd-dashboard-cell>
-    <h2 with-icon>
-      Customer Sentiment
+<bd-dashboard-cell>
+  <h2 with-icon>
+    Customer Sentiment
 
-      <bd-icon>
-        {% include "svgs/file-analytics.svg" %}
-      </bd-icon>
-    </h2>
+    <bd-icon>
+      {% include "svgs/file-analytics.svg" %}
+    </bd-icon>
+  </h2>
 
-    <bd-callout>
-      {% component_dsd "bd-callout" %}
+  <bd-callout>
+    {% component_dsd "bd-callout" %}
 
-      <bd-chart type="doughnut" style="max-height: 350px">
-        {% component_dsd "bd-chart" %}
-        <script>
-          document.currentScript.parentNode.addEventListener("request-config", e => {
-            const callback = e.detail.callback
+    <bd-chart type="doughnut" style="max-height: 350px">
+      {% component_dsd "bd-chart" %}
+      <script>
+        document.currentScript.parentNode.addEventListener("request-config", e => {
+          const callback = e.detail.callback
 
-            const data = [
-              { sentiment: "Happy", percentage: 72 },
-              { sentiment: "Not So Happy", percentage: 13 },
-              { sentiment: "Disgruntled", percentage: 15 },
-            ];
+          const data = [
+            { sentiment: "Happy", percentage: 72 },
+            { sentiment: "Not So Happy", percentage: 13 },
+            { sentiment: "Disgruntled", percentage: 15 },
+          ];
 
-            callback({
-              data: {
-                labels: data.map(row => row.sentiment),
-                datasets: [
-                  {
-                    label: 'Percentage',
-                    data: data.map(row => row.percentage)
-                  }
-                ]
-              }
-            })
+          callback({
+            data: {
+              labels: data.map(row => row.sentiment),
+              datasets: [
+                {
+                  label: "Percentage",
+                  data: data.map(row => row.percentage)
+                }
+              ]
+            }
           })
-        </script>
-      </bd-chart>
-    </bd-callout>
-  </bd-dashboard-cell>
-  <bd-dashboard-cell>
-    <h2 with-icon>
-      Projected Growth
+        })
+      </script>
+    </bd-chart>
+  </bd-callout>
+</bd-dashboard-cell>
+<bd-dashboard-cell>
+  <h2 with-icon>
+    Projected Growth
 
-      <bd-icon>
-        {% include "svgs/file-analytics.svg" %}
-      </bd-icon>
-    </h2>
+    <bd-icon>
+      {% include "svgs/file-analytics.svg" %}
+    </bd-icon>
+  </h2>
 
-    <bd-callout>
-      {% component_dsd "bd-callout" %}
+  <bd-callout>
+    {% component_dsd "bd-callout" %}
 
-      <bd-chart type="bar">
-        {% component_dsd "bd-chart" %}
-        <script>
-          document.currentScript.parentNode.addEventListener("request-config", e => {
-            const callback = e.detail.callback
+    <bd-chart type="bar">
+      {% component_dsd "bd-chart" %}
+      <script>
+        document.currentScript.parentNode.addEventListener("request-config", e => {
+          const callback = e.detail.callback
 
-            const data = [
-              { month: "October", millions: 14.85 },
-              { month: "November", millions: 20.10 },
-              { month: "December", millions: 33.86 },
-            ];
+          const data = [
+            { month: "October", millions: 14.85 },
+            { month: "November", millions: 20.10 },
+            { month: "December", millions: 33.86 },
+          ];
 
-            callback({
-              options: {
-                aspectRatio: 1.5,
-              },
-              data: {
-                labels: data.map(row => row.month),
-                datasets: [
-                  {
-                    label: 'Revenue (Millions)',
-                    data: data.map(row => row.millions),
-                    backgroundColor: e.target.defaultBarColors,
-                    borderColor: e.target.defaultBarBorders,
-                    borderWidth: 1
-                  }
-                ]
-              }
-            })
+          callback({
+            options: {
+              aspectRatio: 1.5,
+            },
+            data: {
+              labels: data.map(row => row.month),
+              datasets: [
+                {
+                  label: "Revenue (Millions)",
+                  data: data.map(row => row.millions),
+                  backgroundColor: e.target.defaultBarColors,
+                  borderColor: e.target.defaultBarBorders,
+                  borderWidth: 1
+                }
+              ]
+            }
           })
-        </script>
-      </bd-chart>
-    </bd-callout>
-  </bd-dashboard-cell>
-</bd-dashboard>
+        })
+      </script>
+    </bd-chart>
+  </bd-callout>
+</bd-dashboard-cell>
