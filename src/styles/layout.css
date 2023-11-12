@@ -34,6 +34,14 @@ button[sidebar-toggler] {
   }
 }
 
+/* Sidebar Overrides */
+
+nav[slot="sidebar"] bd-menu-item {
+  /* Because the menu items hug the left window edge, we need to remove border radius */
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 /* Skip to Content Link */
 
 a[slot="skip-to-content"] {

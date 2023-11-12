@@ -35,6 +35,7 @@ h1 {
 
 h2 {
   margin-block-start: 0;
+  margin-block-end: var(--fluid-sectioning);
 }
 
 h2[with-icon] {

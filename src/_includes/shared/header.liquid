@@ -12,7 +12,11 @@
   </button>
   <h1 style="flex-grow: 1">{{ title }}</h1>
 
-  <bd-icon style="--icon-size: var(--size-5)">
-    {% include "svgs/search.svg" %}
-  </bd-icon>
+  <search>
+    <button style="all: unset" onclick='alert("Not implemented…yet!")'>
+      <bd-icon style="--icon-size: var(--size-5)">
+        {% include "svgs/search.svg" %}
+      </bd-icon>
+    </button>
+  </search>
 </header>

@@ -6,22 +6,31 @@
   --shadow-color: 220 3% 15%;
   --shadow-strength: 1%;
 
+  /* Base Design Tokens */
+  --font-sans: "Red Hat Text", sans-serif; /* overwrites Open Props */
+  --color-indigo: #2e2842;
+  --color-purple: #53254f;
+  --color-gold: #ffa507;
+  --color-ivory: #efede2;
+
   /* Semantic Design Tokens */
-  --body-font: "Red Hat Text", sans-serif;
-  --body-background: #2e2842;
+  --body-font: var(--font-sans);
+  --body-background: var(--color-indigo);
   --font-scale: 120%;
   --sidebar-background: var(--body-background);
-  --sidebar-selected-background: #53254f;
+  --sidebar-selected-background: var(--color-purple);
+  --action-background: var(--color-purple);
   --title-background: var(--body-background);
   --title-color: var(--stone-0);
   --title-font-size: var(--font-size-5);
-  --canvas-background: #efede2;
+  --canvas-background: var(--color-ivory);
   --surface-background: var(--stone-0);
-  --accent-color: #ffa507;
+  --accent-color: var(--color-gold);
   --callout-interior-spacing: var(--size-3);
   --callout-background: var(--surface-background);
   --callout-radius: var(--radius-3);
   --callout-shadow: var(--shadow-3);
+  --fluid-sectioning: var(--size-fluid-2);
 }
 
 /* I really wish I had PostCSS here so we could variablize the breakpoints… */

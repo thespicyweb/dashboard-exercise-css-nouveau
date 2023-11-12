@@ -17,6 +17,7 @@
 
   <bd-menu role="list">
     {% component_dsd "bd-menu" %}
+
     <bd-menu-item role="listitem" selected noprefix>
       {% component_dsd "bd-menu-item" %}
       <a href="/">Dashboard</a>
@@ -61,6 +62,8 @@
 
 <script type="module">
   document.body.addEventListener("click", e => {
+    // If no elements anywhere in the DOM tree for the click include the sidebar slot or a
+    // `sidebar-toggler` attribute, we can safely close the sidebar.
     if (!e.composedPath().some(item => (item.localName === "slot" && item.name === "sidebar") || item.hasAttribute && item.hasAttribute("sidebar-toggler"))) {
       document.body.removeAttribute("open-sidebar")
     }
