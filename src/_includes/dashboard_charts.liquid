@@ -1,6 +1,6 @@
 <bd-dashboard-cell>
   <h2 with-icon>
-    Quarterly Sales
+    Monthly Sales
 
     <bd-icon>
       {% include "svgs/file-analytics.svg" %}
@@ -17,9 +17,9 @@
           const callback = e.detail.callback
 
           const data = [
-            { month: "July", millions: 12.21 },
-            { month: "August", millions: 20.23 },
-            { month: "September", millions: 15.51 },
+            { month: "August", millions: 12.21 },
+            { month: "September", millions: 20.23 },
+            { month: "October", millions: 15.51 },
           ];
 
           callback({
@@ -101,9 +101,9 @@
           const callback = e.detail.callback
 
           const data = [
-            { month: "October", millions: 14.85 },
-            { month: "November", millions: 20.10 },
-            { month: "December", millions: 33.86 },
+            { month: "Q1 2024", millions: 14.85 },
+            { month: "Q2 2024", millions: 20.10 },
+            { month: "Q3 2024", millions: 33.86 },
           ];
 
           callback({
@@ -127,4 +127,16 @@
       </script>
     </bd-chart>
   </bd-callout>
+
+  <footer style="text-align: right; margin-block-start: var(--fluid-sectioning)">
+    <bd-button size="small">
+      {% component_dsd "bd-button" %}
+      <button onclick='alert("Not implemented…yet")'>
+        <bd-icon>
+          {% include "svgs/calendar-stats.svg" %}
+        </bd-icon>
+        Adjust Range
+      </button>
+    </bd-button>
+  </footer>
 </bd-dashboard-cell>

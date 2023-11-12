@@ -1,0 +1,49 @@
+<template shadowrootmode="open">
+  <style>
+    :host {
+      --spacing-inline: var(--size-4); /* 1.25rem */
+      --spacing-block: calc(var(--size-2) + var(--size-1)); /* .75rem */
+      --radius: var(--radius-2);
+
+      display: inline-block;
+      background: var(--action-background);
+      color: var(--surface-background);
+      border-radius: var(--radius);
+      transition: background 0.12s var(--ease-in-out-3);
+    }
+
+    :host(:hover) {
+      background: color-mix(in oklch, var(--action-background) 80%, var(--accent-color));
+    }
+
+    :host([size="small"]) {
+      --spacing-inline: var(--size-3);
+      --spacing-block: var(--size-2);
+
+      font-size: 85%;
+    }
+
+    ::slotted(*) {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--spacing-inline) * 0.5);
+      margin: 0;
+      padding-inline: var(--spacing-inline);
+      padding-block: var(--spacing-block);
+    }
+
+    ::slotted(a) {
+      text-decoration: none;
+      color: inherit !important;
+    }
+
+    ::slotted(button) {
+      background: none;
+      color: inherit;
+      font: inherit;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+  <slot></slot>
+</template>
