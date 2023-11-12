@@ -11,7 +11,7 @@
   --color-indigo: #2e2842;
   --color-purple: #53254f;
   --color-gold: #ffa507;
-  --color-ivory: #efede2;
+  --color-tan: #efede2;
 
   /* Semantic Design Tokens */
   --body-font: var(--font-sans);
@@ -23,7 +23,7 @@
   --title-background: var(--body-background);
   --title-color: var(--stone-0);
   --title-font-size: var(--font-size-5);
-  --canvas-background: var(--color-ivory);
+  --canvas-background: var(--color-tan);
   --surface-background: var(--stone-0);
   --accent-color: var(--color-gold);
   --callout-interior-spacing: var(--size-3);
